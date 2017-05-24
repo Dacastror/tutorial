@@ -45,7 +45,7 @@ Una vez más vamos a crear: un enlace a la página, una dirección URL, una vist
 Es hora de abrir `blog/templates/blog/base.html`. Vamos a añadir un enlace en `div` llamado `page-header`:
 
 ```html
-    <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
 ```    
 
 Ten en cuenta que queremos llamar a nuestra nueva vista `post_new`.
@@ -64,7 +64,7 @@ Después de agregar la línea, tu archivo html debería tener este aspecto:
         </head>
         <body>
             <div class="page-header">
-                <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                 <h1><a href="/">Django Girls Blog</a></h1>
             </div>
             <div class="content container">
@@ -97,7 +97,7 @@ Y el código final tendrá este aspecto:
     
     urlpatterns = [
         url(r'^$', views.post_list),
-        url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail),
+        url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
         url(r'^post/new/$', views.post_new, name='post_new'),
     ]
 ```    
